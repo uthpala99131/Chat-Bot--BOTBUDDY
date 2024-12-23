@@ -69,19 +69,56 @@ body{
     margin-bottom: 82px;
     overflow: auto;
  }
- .chat-body .message{
+ .chat-body .bot-message{
     display: flex;
     gap: 11px;
     align-items: center;
+ }
+
+ .chat-body .bot-message .message-text{
+    padding: 12px 16px;
+    max-width: 75%;
+    font-size: 10px;
+    background: aqua;
+    border-radius: 13px 13px 13px 3px;
  }
  .chat-body .bot-message .bot-avatar{
     height: 35px;
     width: 35px;
     padding: 7px;
-    fill: rgb(0, 15, 15);
+    fill: rgb(255, 255, 255);
     flex-shrink: 0;
-    background: white;
+    margin-bottom: 2px;
+    align-self: flex-end;
+    background: rgb(255, 0, 0);
     border-radius: 50%;
+ }
+ .chat-body .user-message{
+    flex-direction: column;
+    align-items: end;
+    justify-items: end;
+ }
+ .chat-body .user-message .message-text{
+    color: white;
+    padding: 12px 16px;
+    max-width: 75%;
+    font-size: 10px;
+    background: rgb(1, 89, 89);
+    border-radius: 13px 13px 3px 13px;
+    
+ }
+ .chat-body  .thinking .message-text{
+    display: flex;
+  
+    gap: 4px;
+    padding-block: 15px;
+ }
+ .chat-body .thinking .message-text .dot{
+    height: 7px;
+    width: 7px;
+    background: black;
+    border-radius: 50%;
+    
  }
  .chat-footer{
     padding: 20px;
