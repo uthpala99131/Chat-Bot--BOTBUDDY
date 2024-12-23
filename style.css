@@ -20,8 +20,71 @@ body{
     overflow: hidden;
     border-radius: 15px;
     box-shadow: 0 0 128px 0 black, 0 32px 64px -48px black;
-    padding: 10px;
+   
 }   
  .chat-header{
     display: flex;
+    align-items: center;
+    background: red;
+    padding: 15px 22px;
+    justify-content: space-between;
+ }
+ .chat-header .header-info{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+ }
+ .chat-header .header-info .chatbot-logo{
+    height: 35px;
+    width: 35px;
+    padding: 7px;
+    fill: rgb(0, 15, 15);
+    flex-shrink: 0;
+    background: white;
+    border-radius: 50%;
+ }
+ .chat-header #close{
+    border: none;
+    color: white;
+    height: 35px;
+    width: 35px;
+    font-size: 15px;
+    margin-right: -10px;
+    padding-top: 2px;
+    cursor: pointer;
+    border-radius:50% ;
+    background-color: rgb(255, 0, 0);
+    transition: 0.5s;
+ }
+ .chat-header #close:hover{
+    background: brown;
+    font-size: 16px;
+ }
+ .chat-body{
+    padding: 20px;
+    flex-direction: column;
+    display: flex;
+    gap: 20px;
+    height: 460px;
+    margin-bottom: 82px;
+    overflow: auto;
+ }
+ .chat-body .message{
+    display: flex;
+    gap: 11px;
+    align-items: center;
+ }
+ .chat-body .bot-message .bot-avatar{
+    height: 35px;
+    width: 35px;
+    padding: 7px;
+    fill: rgb(0, 15, 15);
+    flex-shrink: 0;
+    background: white;
+    border-radius: 50%;
+ }
+ .chat-footer{
+    padding: 20px;
+    display: flex;
+    position: absolute;
  }
