@@ -200,4 +200,9 @@ body{
 .chat-footer .chat-form .chat-controls #submit{
     background: red;
     color: white;
+    display: none;
+}
+.chat-footer .chat-form .message-input:valid~.chat-controls #submit{
+   
+    display: block;
 }
