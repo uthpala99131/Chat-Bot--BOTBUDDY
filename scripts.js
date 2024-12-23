@@ -1,9 +1,10 @@
+const API_KEY = "AIzaSyCRbanx_Z-tdI8tKvTw7JqAZlVNebP9MMc";
+const API_URL = `https://generativelanguage.googleapis.com/v1beta2/models/gemini-1.5-flash:generateText?key=${API_KEY}`;
+
 const chatBody = document.querySelector(".chat-body");
 const messageInput = document.querySelector(".message-input");
-const sendMessageButton = document.querySelector("#submit"); // Correct button ID
+const sendMessageButton = document.querySelector("#submit");
 
-const API_KEY = "AIzaSyCRbanx_Z-tdI8tKvTw7JqAZlVNebP9MMc"; // Replace with your actual API key
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 const userData = { message: null };
 
 const createMessageElement = (content, ...classes) => {
@@ -13,18 +14,14 @@ const createMessageElement = (content, ...classes) => {
     return div;
 };
 
-const generateBotResponse = async () => {
+const generateBotResponse = async (incomingMessageDiv) => {
+    const messageElement = incomingMessageDiv.querySelector(".message-text");
     const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             prompt: {
-                messages: [
-                    {
-                        author: "user",
-                        content: userData.message,
-                    },
-                ],
+                text: userData.message,
             },
         }),
     };
@@ -35,22 +32,12 @@ const generateBotResponse = async () => {
 
         if (!response.ok) throw new Error(data.error.message);
 
-        // Extract bot's reply and append it
-        const botReply = data.candidates?.[0]?.content || "I'm sorry, I couldn't process your message.";
-        const botResponseMessage = createMessageElement(
-            `<div class="message-text">${botReply}</div>`,
-            "bot-message"
-        );
-        chatBody.appendChild(botResponseMessage);
-        chatBody.scrollTop = chatBody.scrollHeight; // Auto-scroll to the latest message
+        // Extract and display the API response
+        const apiResponseText = data.candidates[0].output.trim();
+        messageElement.innerText = apiResponseText;
     } catch (error) {
-        console.error("Error fetching bot response:", error);
-        const errorMessage = createMessageElement(
-            `<div class="message-text">Oops! Something went wrong. Please try again later.</div>`,
-            "bot-message"
-        );
-        chatBody.appendChild(errorMessage);
-        chatBody.scrollTop = chatBody.scrollHeight; // Auto-scroll to the latest message
+        console.error(error);
+        messageElement.innerText = "Sorry, I couldn't process your request. Please try again.";
     }
 };
 
@@ -68,6 +55,27 @@ const handleOutgoingMessage = () => {
     }
 };
 
+const simulateBotResponse = () => {
+    const thinkingMessageContent = `
+        <div class="message-text">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    `;
+    const thinkingMessage = createMessageElement(thinkingMessageContent, "bot-message", "thinking");
+    chatBody.appendChild(thinkingMessage);
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    setTimeout(() => {
+        chatBody.removeChild(thinkingMessage);
+        const botMessageDiv = createMessageElement('<div class="message-text"></div>', "bot-message");
+        chatBody.appendChild(botMessageDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
+        generateBotResponse(botMessageDiv);
+    }, 1000); // Simulate a 1-second delay
+};
+
 // Listen for the Enter key to send the message
 messageInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
@@ -81,24 +89,3 @@ sendMessageButton.addEventListener("click", (e) => {
     e.preventDefault();
     handleOutgoingMessage();
 });
-
-// Simulate bot response with a "thinking" animation
-const simulateBotResponse = () => {
-    const thinkingMessageContent = `
-        <div class="bot-avatar"></div>
-        <div class="message-text">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
-    `;
-    const thinkingMessage = createMessageElement(thinkingMessageContent, "bot-message", "thinking");
-    chatBody.appendChild(thinkingMessage);
-    chatBody.scrollTop = chatBody.scrollHeight; // Auto-scroll to the latest message
-
-    // Simulate delay before bot response
-    setTimeout(() => {
-        chatBody.removeChild(thinkingMessage); // Remove "thinking" message
-        generateBotResponse();
-    }, 2000); // 2-second delay for bot response
-};
