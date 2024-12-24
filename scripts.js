@@ -7,7 +7,7 @@ const fileCancelButton = document.querySelector("#file-cancel");
 const chatbotToggler = document.querySelector("#chatbot-Toggler");
 const closeChatbot = document.querySelector("#close-chatbot");
 
-const API_KEY = "AIzaSyCRbanx_Z-tdI8tKvTw7JqAZlVNebP9MMc";
+const API_KEY = "AIzaSyCpIej5bbmFRe24Rl76sKSwKtSVvG7YF1M";
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
 const userData = {
@@ -74,7 +74,7 @@ const handleOutgoingMessage = () => {
     
     const hasFile = userData.file && userData.file.data;
     const fileContent = hasFile
-        ? `<img src="data:${userData.file.mime_type};base64,${userData.file.data}" />`
+        ? `<img src="data:${userData.file.mime_type};base64,${userData.file.data}" class="attachment" />`
         : "";
 
     if (userData.message || hasFile) { 
