@@ -8,20 +8,58 @@
     box-sizing: border-box;
 }
 body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     min-height: 100vh;
     background: lightseagreen;
 }
+#chatbot-toggler{
+    position: fixed;
+    bottom: 40px;
+    right: 50px;
+    border: none;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: all 0.2s ease;
+}
+body.show-chatbot #chatbot-toggler{
+    transform: rotate(90deg);
+}
+#chatbot-toggler span{
+    color: white;
+    position: absolute;
+}
+body.show-chatbot #chatbot-toggler span:last-child,
+#chatbot-toggler span:last-child{
+    opacity: 0;
+}
+body.show-chatbot #chatbot-toggler span:last-child{
+    opacity: 1;
+}
 .chatbot-popup{
     background: white;
-    position: relative;
+    position: fixed;
+    right: 35px;
+    bottom: 90px;
     width: 420px;
     overflow: hidden;
+    opacity: 0;
+    transform: scale(0.2);
+    transform-origin: bottom right;
+    pointer-events: none;
     border-radius: 15px;
     box-shadow: 0 0 128px 0 black, 0 32px 64px -48px black;
-   
+   transition: all 0.2s ease;
+}
+body.show-chatbot .chatbot-popup{
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
 }   
  .chat-header{
     display: flex;
@@ -158,7 +196,7 @@ body{
     display: flex;
     width: 100%;
     border-radius: 35px;
-  
+    position: relative;
     background: white;
     outline: 2px solid beige;
     
@@ -206,3 +244,30 @@ body{
    
     display: block;
 }
+
+.chat-form .file-upload-wrapper #file-cancel{
+    color: red;
+    background: white;
+}
+.chat-form .file-upload-wrapper :where(img,#file-cancel),
+.chat-form .file-upload-wrapper.file-uploaded #file-upload{
+    display: none;
+}
+.chat-form .file-upload-wrapper.file-uploaded img,
+.chat-form .file-upload-wrapper.file-uploaded:hover #file-cancel{
+    display: block;
+}
+
+em-emoji-picker{
+    position: absolute;
+    left: 50%;
+    top: -340px;
+    width: 100%;
+    max-width: 100%;
+    max-height: 330px;
+    visibility: hidden;
+    transform: translateX(-50%);
+}
+body.show-emoji-picker em-emoji-picker{
+    visibility: visible;
+} 
