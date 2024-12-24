@@ -8,7 +8,7 @@ const chatbotToggler =document.querySelector("#chatbot-Toggler");
 const closeChatbot = document.querySelector("#close-chatbot");
 
 
-const API_KEY = "AIzaSyDq2kQuUN5KmzmWhNW3XlqHHvv68nVUCsw";
+const API_KEY = "AIzaSyCRbanx_Z-tdI8tKvTw7JqAZlVNebP9MMc";
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
 const userData = {
@@ -168,7 +168,11 @@ const picker = new EmojiMart.Picker({
 document.querySelector(".chat-form").appendChild(piccker);
 
 sendMessageButton.addEventListener("click", (e) => handleOutgoingMessage(e));
-document.querySelector("#file-upload").addEventListener("click",() => fileInput.click());
+document.querySelector("#file-upload").addEventListener("click", () => fileInput.click());
+
 chatbotToggler.addEventListener("click", ()=> document.body.classList.toggle("show-chatbot"));
 
 closeChatbot.addEventListener("click", ()=> document.body.classList.remove("show-chatbot"));
+
+
+
