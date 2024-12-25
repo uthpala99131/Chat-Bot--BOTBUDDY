@@ -175,6 +175,7 @@ const picker = new EmojiMart.Picker({
     }
 });
 
+
 document.querySelector(".chat-form").appendChild(picker);
 
 sendMessageButton.addEventListener("click", (e) => handleOutgoingMessage(e));

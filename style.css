@@ -91,6 +91,7 @@ body.show-chatbot #chatbot-toggler span:last-child{
     width: 420px;
     height: 570px;
     overflow: hidden;
+    
     border-radius: 15px;
     opacity: 0;
     transform: scale(0.2);
