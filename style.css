@@ -273,8 +273,9 @@ body.show-chatbot #chatbot-toggler span:last-child{
     width: 100%;
     resize: none;
     font-size: 10px;
-    padding: 10px 0 13px 18px;
+    padding: 8px 0 13px 18px;
     border-radius: inherit;
+    overflow: hidden;
  }
  .chat-footer .chat-form .chat-controls{
     display: flex;
@@ -307,8 +308,8 @@ body.show-chatbot #chatbot-toggler span:last-child{
     background:var(--main-color);
 }
 .chat-footer .chat-form .chat-controls #submit{
-    background:var(--main-color);
-    color: white;
+    background:rgb(0, 0, 0);
+    color: var(--main-color);
     display: none;
 }
 .chat-footer .chat-form .message-input:valid~.chat-controls #submit{
