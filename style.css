@@ -45,7 +45,7 @@ body{
     min-height: 100vh;
     background-size: cover;
     background-position: center; 
-    background: linear-gradient(rgba(52, 2, 2, 0.338), rgba(0, 0, 0, 0.864)), url('wp.png');
+    background: linear-gradient(rgba(52, 2, 2, 0.338), rgba(0, 0, 0, 0.864)), url('img/wp.png');
 }
 body.show-chatbot .chatbot-popup{
     opacity: 1;
@@ -82,7 +82,7 @@ body.show-chatbot #chatbot-toggler span:last-child{
     opacity: 1;
 }
 .chatbot-popup{
-    background: linear-gradient(rgba(52, 2, 2, 0.338), rgba(0, 0, 0, 0.864)), url('cb.jpg');
+    background: linear-gradient(rgba(52, 2, 2, 0.338), rgba(0, 0, 0, 0.864)), url('img/cb.jpg');
     background-size: cover;
     background-position: center; 
     right: 50px;
@@ -104,7 +104,7 @@ body.show-chatbot #chatbot-toggler span:last-child{
  .chat-header{
     display: flex;
     align-items: center;
-    background: linear-gradient(rgba(255, 151, 5, 0.766),rgba(255, 151, 5, 0.892)), url('de.png');
+    background: linear-gradient(rgba(255, 151, 5, 0.766),rgba(255, 151, 5, 0.892)), url('img/de.png');
     background-size: cover;
     background-position: center; 
     padding: 15px 22px;
